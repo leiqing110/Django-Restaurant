@@ -1,0 +1,88 @@
+{# 继承母版 #}
+{% extends 'base.html' %}
+
+{# 把自己页面的内容 塞到母版的相应位置 #}
+{% block page-main %}
+    <h1 class="page-header">会员订单详情</h1>
+
+            <div class="panel panel-primary">
+                <!-- Default panel contents -->
+                <div class="panel-heading">会员订单详情 <i class="fa fa-thumb-tack pull-right"></i></div>
+                <div class="panel-body">
+                    <div class="row" style="margin-bottom: 15px">
+                        <div class="col-md-4">
+                            <form action="/search_huiyuan/" method="POST">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="订单号查找" name="search_order">
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-default">搜索</button>
+
+                                </span>
+                            </div><!-- /input-group -->
+                            </form>
+                        </div><!-- /.col-md-4 -->
+{#                        <div class="col-md-2 pull-right">#}
+{#                            <a href="/add_huiyuan/" class="btn btn-success pull-right">添加新会员</a>#}
+{#                        </div>#}
+
+                    </div><!-- /.row -->
+
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>订单编号</th>
+                            <th>会员姓名</th>
+                            <th>下单内容</th>
+                            <th>总金额</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for order in all_order %}
+                            <tr>
+                            <td>{{ order.id }}</td>
+                            <td>{{ username }}</td>
+                            <td>
+                               {% for movie in order.movies.all %}
+                                   {{ movie.mname }}
+                                    {% endfor %}
+                                {% for good in order.goods.all %}
+                                   {{  good.name }}
+                                    {% endfor %}
+                            </td>
+                            <td>{{ order.price }}</td>
+                            <td>
+                                <a class="btn btn-danger" href="/refund/?id={{ order.id }}">退款</a>
+                            </td>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <nav aria-label="Page navigation" class="text-right">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+{% endblock %}
+
+{% block huiyuan_class %}
+ active
+{% endblock %}

@@ -1,0 +1,3 @@
+import pymysql
+#告诉DJango用pymsql代替默认的MysqlDB
+pymysql.install_as_MySQLdb()

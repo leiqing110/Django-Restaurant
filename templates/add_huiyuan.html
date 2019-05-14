@@ -1,0 +1,27 @@
+{# 继承母版 #}
+{% extends 'base_add.html' %}
+
+{% block add_title %}新会员
+{% endblock %}
+{% block add_title2 %}添加新会员
+{% endblock %}
+{% block add_huiyuan %}
+    {# 加一个导航条 #}
+{% include 'nav.html' %}
+    <form action="/add_huiyuan/" method="post">
+        <div class="form-group">
+            <label for="huiyuan_name">会员名字:</label>
+            <input type="text" class="form-control" id="huiyuan_name" placeholder="会员名称" name="huiyuan_name">
+        </div>
+        <div class="form-group">
+            <label for="huiyuan_name">会员密码:</label>
+            <input type="text" class="form-control" id="huiyuan_pwd" placeholder="会员密码" name="huiyuan_pwd">
+        </div>
+        <div class="form-group">
+            <label for="huiyuan_prcie">充值金额:</label>
+            <input type="text" class="form-control" id="huiyuan_price" placeholder="充值金额(整数为单位)" name="huiyuan_price">
+        </div>
+
+        <button type="submit" class="btn btn-success">注册</button>
+    </form>
+{% endblock %}

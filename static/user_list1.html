@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://v3.bootcss.com/examples/dashboard/ -->
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://v3.bootcss.com/favicon.ico">
+
+    <title>Dashboard</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/static/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/fontawesome/css/font-awesome.min.css">
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://v3.bootcss.com/examples/dashboard/#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://v3.bootcss.com/examples/dashboard/#">Dashboard</a></li>
+                <li><a href="https://v3.bootcss.com/examples/dashboard/#">Settings</a></li>
+                <li><a href="https://v3.bootcss.com/examples/dashboard/#">Profile</a></li>
+                <li><a href="https://v3.bootcss.com/examples/dashboard/#">Help</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="Search...">
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="/user_list/">用户信息表页<span class="sr-only">(current)</span></a>
+                </li>
+                <li><a href="https://v3.bootcss.com/examples/dashboard/#"></a></li>
+                <li><a href="https://v3.bootcss.com/examples/dashboard/#">Analytics</a></li>
+                <li><a href="https://v3.bootcss.com/examples/dashboard/#">Export</a></li>
+            </ul>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Dashboard</h1>
+
+            <div class="panel panel-primary">
+                <!-- Default panel contents -->
+                <div class="panel-heading">用户列表 <i class="fa fa-thumb-tack pull-right"></i></div>
+                <div class="panel-body">
+                    <div class="row" style="margin-bottom: 15px">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">搜索</button>
+                                </span>
+                            </div><!-- /input-group -->
+                        </div><!-- /.col-md-4 -->
+                        <div class="col-md-1 pull-right">
+                            <button class="btn btn-success" data-toggle="modal" data-target="#myModal">新增</button>
+                        </div>
+
+                    </div><!-- /.row -->
+
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>id</th>
+                            <th>出版社名称</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for publisher in publisher_list %}
+        <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>
+            <a class="btn btn-danger" href="/delete_userer/?id={{user.id }}">删除</a>
+            <a class="btn btn-info" href="/edit_user/?id={{ user.id }}">编辑</a>
+        </td>
+        </tr>
+    {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <nav aria-label="Page navigation" class="text-right">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">用户信息</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">邮箱</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+    </div>
+  </div>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary">保存</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/static/jquery-3.3.1.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

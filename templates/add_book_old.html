@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加书籍</title>
+</head>
+<body>
+<h1>添加书籍</h1>
+<form action="/add_book/" method="post">
+    <p>
+        书名：<input type="text" name="book_title">
+    </p>
+    <p>
+        出版社：
+        <select name="publisher">
+            {% for publisher in  publisher_list %}
+                <option value="{{ publisher.id}}">{{publisher.name}}</option>
+            {% endfor %}
+        </select>
+    </p>
+    <p>
+        <input type="submit" value="提交">
+    </p>
+
+</form>
+</body>
+</html>

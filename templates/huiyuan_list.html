@@ -1,0 +1,83 @@
+{# 继承母版 #}
+{% extends 'base.html' %}
+
+{# 把自己页面的内容 塞到母版的相应位置 #}
+{% block page-main %}
+    <h1 class="page-header">会员管理</h1>
+
+            <div class="panel panel-primary">
+                <!-- Default panel contents -->
+                <div class="panel-heading">会员列表 <i class="fa fa-thumb-tack pull-right"></i></div>
+                <div class="panel-body">
+                    <div class="row" style="margin-bottom: 15px">
+                        <div class="col-md-4">
+                            <form action="/search_huiyuan/" method="POST">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="输入姓名查找" name="search_huiyuan">
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-default">搜索</button>
+
+                                </span>
+                            </div><!-- /input-group -->
+                            </form>
+                        </div><!-- /.col-md-4 -->
+                        <div class="col-md-2 pull-right">
+                            <a href="/add_huiyuan/" class="btn btn-success pull-right">添加新会员</a>
+                        </div>
+
+                    </div><!-- /.row -->
+
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>会员编号</th>
+                            <th>会员姓名</th>
+                            <th>会员金额</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for huiyuan in all_huiyuan %}
+                            <tr>
+                            <td>{{ forloop.counter}}</td>
+                            <td>{{ huiyuan.id }}</td>
+                            <td>{{ huiyuan.name }}</td>
+                            <td>{{ huiyuan.price }}</td>
+                            <td>
+                                <a class="btn btn-danger" href="/delete_huiyuan/?id={{ huiyuan.id }}">删除</a>
+                                <a class="btn btn-info" href="/edit_huiyuan/?id={{ huiyuan.id }}">编辑</a>
+                                <a href="/order/?id={{ huiyuan.id }}" class="btn btn-success pull-right">消费记录</a>
+
+                            </td>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <nav aria-label="Page navigation" class="text-right">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+{% endblock %}
+
+{% block huiyuan_class %}
+ active
+{% endblock %}

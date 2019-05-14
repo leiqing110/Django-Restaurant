@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://v3.bootcss.com/examples/dashboard/ -->
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://v3.bootcss.com/favicon.ico">
+
+    <title>{% block add_title2%}{% endblock %}</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/static/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/fontawesome/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container"  style="margin-top:70px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">添加{% block add_title%}{% endblock %}</h3>
+                </div>
+                <div class="panel-body">
+                    {% block add_huiyuan%}
+
+                    {% endblock %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

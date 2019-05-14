@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>购物车数字加减框</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	</head>
+
+	<body>
+		<ul class="btn-numbox">
+			<li><span class="number">数量</span></li>
+			<li>
+				<ul class="count">
+					<li><span id="num-jian" class="num-jian">-</span></li>
+					<li><input type="text" class="input-num" id="input-num" value="0" /></li>
+					<li><span id="num-jia" class="num-jia">+</span></li>
+				</ul>
+			</li>
+			<li><span class="kucun">（库存:54）</span></li>
+			</ul>
+	</body>
+
+	<script>
+		var num_jia = document.getElementById("num-jia");
+		var num_jian = document.getElementById("num-jian");
+		var input_num = document.getElementById("input-num");
+
+		num_jia.onclick = function() {
+
+			input_num.value = parseInt(input_num.value) + 1;
+		}
+
+		num_jian.onclick = function() {
+
+			if(input_num.value <= 0) {
+				input_num.value = 0;
+			} else {
+
+				input_num.value = parseInt(input_num.value) - 1;
+			}
+
+		}
+		
+		/* 如果在和后台做数据交互时，出现点击加减按钮的值无法传到后台的情况，可以用下面这种方式
+		$("body").on("click", ".num-jian", function(m) {
+			var obj = $(this).closest("ul").find(".input-num");
+			if(obj.val() <= 0) {
+			     obj.val(0);
+			} else {
+			     obj.val(parseInt(obj.val()) - 1);
+			}
+			obj.change();
+		 });
+		
+		$("body").on("click", ".num-jia", function(m) {
+			var obj = $(this).closest("ul").find(".input-num");
+			obj.val(parseInt(obj.val()) + 1);
+			obj.change();
+		});*/
+	</script>
+
+</html>

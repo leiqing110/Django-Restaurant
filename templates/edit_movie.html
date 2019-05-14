@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://v3.bootcss.com/examples/dashboard/ -->
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://v3.bootcss.com/favicon.ico">
+
+    <title>添加电影</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/static/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/fontawesome/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">编辑电影信息</h3>
+                </div>
+                <div class="panel-body">
+                    <form action="/edit_movie/" method="post">
+                        <input tupe="text" style="display: none" name="id" value="{{ movie.id }}"></input>
+                        <div class="form-group">
+                            <label for="add_movie">电影名称:</label>
+                            <input type="text" class="form-control" id="add_movie" placeholder="电影名称"name="moviename" value="{{ movie.mname }}">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3" placeholder="电影简介" name="movieintro" value="{{ movie.intro }}"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="add_time">放映时间:</label>
+                            <input type="text" class="form-control" id="add_time" placeholder="放映时间"name="movietime"value="{{ movie.time}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="add_time">播放影厅:</label>
+                            <input type="text" class="form-control" id="add_yingting" placeholder="播放影厅"name="yingting"value="{{ movie.yingting}}">
+                        </div>
+                        <button type="submit" class="btn btn-success">提交</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

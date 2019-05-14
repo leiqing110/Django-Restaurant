@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://v3.bootcss.com/examples/dashboard/ -->
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://v3.bootcss.com/favicon.ico">
+
+    <title>编辑书籍</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/static/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/fontawesome/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">编辑书籍</h3>
+                </div>
+                <div class="panel-body">
+                    <form action="/edit_book/" method="post">
+                        <input tupe="text" style="display: none" name="id" value="{{ book_obj.id }}"></input>
+                        <div class="form-group">
+                            <label for="book_title">书名:</label>
+                            <input type="text" class="form-control" id="book_title" placeholder="书名" name="book_title"
+                                   value="{{ book_obj.title }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="book_title">出版社</label>
+                            <select class="form-control" name="publisher">
+                                {% for publisher in publisher_list %}
+                                    {{ book_obj.publisher_id_id }}
+                                    {% if book_obj.publisher_id_id == publisher.id %}
+                                        <option selected value="{{ publisher.id }}"> {{ publisher.name }}</option>
+                                    {% else %}
+                                        <option value="{{ publisher.id }}"> {{ publisher.name }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-success">提交</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

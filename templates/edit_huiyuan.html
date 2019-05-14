@@ -1,0 +1,27 @@
+{# 继承母版 #}
+{% extends 'base_edit.html' %}
+
+{% block edit_title1 %}编辑会员信息
+{% endblock %}
+{% block edit_title2 %}编辑会员信息
+{% endblock %}
+
+{% block edit_huiyuan %}
+    <form action="/edit_huiyuan/" method="post">
+        <input tupe="text" style="display: none" name="id" value="{{ huiyuan_obj.id }}"></input>
+        <div class="form-group">
+            <label for="huiyuan_name">会员名字:</label>
+            <input type="text" class="form-control" id="huiyuan_name" placeholder="会员名称" name="huiyuan_name"value="{{ huiyuan_obj.name }}">
+        </div>
+        <div class="form-group">
+            <label for="huiyuan_name">会员密码:</label>
+            <input type="text" class="form-control" id="huiyuan_pwd" placeholder="会员密码" name="huiyuan_pwd"value="{{ huiyuan_obj.pwd }}">
+        </div>
+        <div class="form-group">
+            <label for="huiyuan_prcie">充值金额:</label>
+            <input type="text" class="form-control" id="huiyuan_price" placeholder="充值金额(整数为单位)" name="huiyuan_price"value="{{ huiyuan_obj.price }}">
+        </div>
+
+        <button type="submit" class="btn btn-success">提交</button>
+    </form>
+{% endblock %}
