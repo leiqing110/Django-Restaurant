@@ -27,28 +27,28 @@
 
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">添加新电影</h3>
+                    <h3 class="panel-title">添加新菜品</h3>
                 </div>
                 <div class="panel-body">
-                    <form action="/add_movie/" method="post">
+                    <form action="/add_foods/" method="post">
                         <div class="form-group">
-                            <label for="add_movie">电影名称:</label>
-                            <input type="text" class="form-control" id="add_movie" placeholder="电影名称"name="moviename">
+                            <label for="add_movie">菜品名称:</label>
+                            <input type="text" class="form-control" id="add_movie" placeholder="菜品名称"name="foodname">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" rows="3" placeholder="电影简介" name="movieintro"></textarea>
+                            <textarea class="form-control" rows="3" placeholder="菜品简介" name="foodintro"></textarea>
+                        </div>
+{#                        <div class="form-group">#}
+{#                            <label for="add_time">放映时间:</label>#}
+{#                            <input type="datetime-local" class="form-control" id="add_time" placeholder="放映时间"name="movietime">#}
+{#                        </div>#}
+                        <div class="form-group">
+                            <label for="add_time">菜品价格:</label>
+                            <input type="text" class="form-control" id="add_yingting" placeholder="菜品价格"name="foodprice">
                         </div>
                         <div class="form-group">
-                            <label for="add_time">放映时间:</label>
-                            <input type="datetime-local" class="form-control" id="add_time" placeholder="放映时间"name="movietime">
-                        </div>
-                        <div class="form-group">
-                            <label for="add_time">播放影厅:</label>
-                            <input type="text" class="form-control" id="add_yingting" placeholder="播放影厅"name="yingting">
-                        </div>
-                        <div class="form-group">
-                            <label for="add_price">电影票售价:</label>
-                            <input type="text" class="form-control" id="add_price" placeholder="播放影厅"name="price">
+                            <label for="add_price">温馨提示:</label>
+                            <input type="text" class="form-control" id="add_price" placeholder="温馨提示"name="foodyingting">
                         </div>
                         <button type="submit" class="btn btn-success">提交</button>
                     </form>

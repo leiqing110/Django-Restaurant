@@ -30,12 +30,13 @@ def login(request):#实现登陆操作
     #如果你是Post请求，我就取出提交的数据，做登陆判断
     if request.method == "POST":
         email= request.POST.get("user_email",None)
+        #print(email,pwd)("user_email",None)
         pwd1 = request.POST.get("user_pwd",None)
-        #print(email,pwd)
     #做是否登陆成功的判断\
 
         user = models.UserInfo.objects.filter(email=email,pwd=pwd1)[0]#返回一个列表,user[0]即为返回对象
         #将登陆的用户封装到request.user
+        print(user)
         if user:
             #登陆成功
             request.session["is_login"] = "1"
@@ -44,7 +45,7 @@ def login(request):#实现登陆操作
             #1.生成特殊的字符串
             #2.特殊字符串当成KEY，z在数据库中的session表中对应一个session value
             #3.在相应中向浏览器写了一个COOKIE COOKIE的值就是特殊的字符串
-            return redirect("/movie_list/")
+            return redirect("/foods_list/")
     return render(request,"login.html")
         #error_msg = "邮箱或密码错误"
     #return HttpResponse('ojbk')
@@ -63,10 +64,10 @@ def user_list(request):
     user_obj = models.UserInfo.objects.filter(id=user_id)[0]
     if user_obj.name != 'admin':
         messages.success(request, "对不起，您没有权限查看，请通知管理员")
-        return redirect("/movie_list/")
+        return redirect("/foods_list/")
 
 
-    user_obj = models.AdminInfo.objects.filter(id=user_id)[0]
+    #user_obj = models.UserInfo.objects.filter(id=user_id)[0]
 
     #去数据库中查询所有的用户
     #利用ORM这个工具去查询数据库，不用自己去查询
@@ -140,7 +141,7 @@ def edit_user(request):
     else:
         return HttpResponse("编辑的用户不存在")
 
-def movie_list(request):
+def foods_list(request):
     user_id = request.session.get("user_id")  # 获取sessiond的user_id
     if user_id == None:
         messages.success(request, "您未登录，请先登陆")
@@ -148,12 +149,12 @@ def movie_list(request):
 
     user_obj = models.UserInfo.objects.get(id=user_id)
 
-    all_movie = models.Movies.objects.all()
+    all_food = models.Foods.objects.all()
     # 在html页面完成字符串的替换
     if user_obj:
-        return render(request, "movie_list.html", {"all_movie": all_movie, "user": user_obj})
+        return render(request, "foods_list.html", {"all_movie": all_food, "user": user_obj})
     else:
-        return render(request, "movie_list.html", {"all_movie": all_movie, "user":"匿名用户"})
+        return render(request, "foods_list.html", {"all_movie": all_food, "user":"匿名用户"})
 
 def add_cart(request):#电影票加入购物车
 
@@ -166,43 +167,43 @@ def add_cart(request):#电影票加入购物车
 
 
     user_obj = models.UserInfo.objects.filter(id=user_id)[0]
-    all_movie = models.Movies.objects.all()
-    movie_id = request.GET.get("id")#获取电影ID
+    all_movie = models.Foods.objects.all()
+    food_id = request.GET.get("id")#获取电影ID
 
-    movie_obj = models.Movies.objects.get(id=movie_id)#获取电影对象
+    food_obj = models.Foods.objects.get(id=food_id)#获取电影对象
     if flag == True:#第一次执行加入购物车的操作
         cart_obj = models.Cart.objects.filter(owner= user_obj)
         flag = False #标志位
-        movie_obj.num = 1  # 第一次加入购物车  数量默认为1
-        movie_obj.save()#执行保存操作
+        food_obj.num = 1  # 第一次加入购物车  数量默认为1
+        food_obj.save()#执行保存操作
         cart = models.Cart.objects.create(owner = user_obj)
 
-        cart.movies.add(movie_obj)
+        cart.foods.add(food_obj)
         #cart.owner.add(user_obj)
 
         #print("2")
         cart.save()
         messages.success(request, "加入购物车成功")
-        return redirect("/movie_list/")
+        return redirect("/foods_list/")
     else:
         cart_obj = models.Cart.objects.get(owner=user_obj)
-        for movie in cart_obj.movies.all():
-            if movie_obj == movie:
-                movie_obj.num += 1
-                movie_obj.save()
+        for movie in cart_obj.foods.all():
+            if food_obj == movie:
+                food_obj.num += 1
+                food_obj.save()
                 print("ID:")
                 print(movie.id)
         #return redirect("/movie_list/")
 
-    if cart_obj and movie_obj:
+    if cart_obj and food_obj:
         cart = models.Cart.objects.get(owner=user_id)
-        cart.movies.add(movie_obj)
+        cart.movies.add(food_obj)
         # val = val+1
         # cart.save()
         print("数量")
-        print(movie_obj.num)
+        print(food_obj.num)
         messages.success(request, "加入购物车成功")
-        return redirect("/movie_list/")
+        return redirect("/foods_list/")
 
 
     # cart = models.Cart.objects.create(owner=user_obj)
@@ -308,7 +309,7 @@ def cart(request):
     cart_obj = models.Cart.objects.filter(owner = user_id)
     if cart_obj:
         cart = models.Cart.objects.get(owner=user_id)
-        movie_list = cart.movies.all()
+        movie_list = cart.foods.all()
         goods_list = cart.goods.all()
     else:
         messages.success(request, "购物车为空")
@@ -337,10 +338,10 @@ def count(request):
     cart_obj = models.Cart.objects.filter(owner=user_id)
     if cart_obj:
         cart = models.Cart.objects.get(owner=user_id)
-        movie_list = cart.movies.all()
-        if movie_list:
-            for movie in movie_list:
-                price1 += movie.price*movie.num
+        foods_list = cart.foods.all()
+        if foods_list:
+            for food in foods_list:
+                price1 += food.price*food.num
         goods_list = cart.goods.all()
         if goods_list:
             for good in goods_list:
@@ -348,7 +349,7 @@ def count(request):
         price3 = price1 + price2
     user_obj = models.UserInfo.objects.filter(id=user_id)[0]
     return render(request, "cart.html",
-                  {"user": user_obj, "movie_lists": movie_list, "good_lists": goods_list, "all_price": price3})
+                  {"user": user_obj, "movie_lists": foods_list, "good_lists": goods_list, "all_price": price3})
 def settle_accounts(request):
     if request.method == "POST":
         search = request.POST.get("huiyuan")  # 获取表单内容进行搜索
@@ -380,7 +381,7 @@ def settle_accounts(request):
         delete_cart(request)
         return render(request, "huiyuan_list.html", {"all_huiyuan": all_huiyuan_obj})
 
-def delete_movie(request):
+def delete_foods(request):
     #删除指定的id
     del_id = request.GET.get("id",None)
     #如果能取到ID值
@@ -388,30 +389,28 @@ def delete_movie(request):
         #去数据库删除当前的id值的数据
         #根据id值查找到的数据
         #del_obj = models.UserInfo.objects.get(id=del_id).delete()
-        del_obj = models.Movies.objects.get(id=del_id)
+        del_obj = models.Foods.objects.get(id=del_id)
         #删除
         del_obj.delete()
         # 返回删除后的页面，跳转到出版社的列表页，查看是否删除成功
-        return redirect("/movie_list/")
+        return redirect("/foods_list/")
     else:
         return HttpResponse("要删除的数据不存在")
     pass
 
-def add_movie(request):
+def add_foods(request):
     if request.method == "POST":
-        # {"book_title":"跟金老板学开车，"publisher_id"：9}
-        new_name = request.POST.get("moviename")
-        new_intro = request.POST.get("movieintro")
-        new_time = request.POST.get("movietime")
-        new_yingting = request.POST.get("yingting")
-        new_price = request.POST.get("price")
+        new_name = request.POST.get("foodname")
+        new_intro = request.POST.get("foodintro")
+        new_yingting= request.POST.get("foodyingting")#温馨提示
+        new_price = request.POST.get("foodprice")
 
 
-        models.Movies.objects.create(mname=new_name, intro=new_intro,time=new_time,yingting=new_yingting,price=new_price)
+        models.Foods.objects.create(mname=new_name, intro=new_intro,yingting=new_yingting,price=new_price)
         # #返回到书籍列表页
-        return redirect("/movie_list/")
-    ret = models.Movies.objects.all()
-    return render(request, "add_movie.html", {"movie_list": ret})
+        return redirect("/foods_list/")
+    ret = models.Foods.objects.all()
+    return render(request, "add_foods.html", {"movie_list": ret})
 
 def search(request):
     if request.method == "POST":
@@ -420,9 +419,9 @@ def search(request):
         # 根据ID获取要修改的对象\
         # print(edit_id)
         #print(edit_name)
-        edit_movie = models.Movies.objects.filter(Q(mname__icontains=edit))
+        edit_food = models.Foods.objects.filter(Q(mname__icontains=edit))
 
-        return render(request, "movie_list.html", {"all_movie": edit_movie})
+        return render(request, "foods_list.html", {"all_movie": edit_food})
 
 def search_huiyuan(request): #会员信息查找函数
     if request.method == "POST":
@@ -445,7 +444,8 @@ def search_good(request):#卖品查找
         edit_good = models.Goods.objects.filter(Q(name__icontains=edit)|Q(type_id__name__icontains=edit))#根据条件筛选
 
         return render(request, "goods_list.html", {"all_goods": edit_good})
-def edit_movie(request):
+
+def edit_foods(request):
     #用户修改完用户的名字，点击提交按钮，给我发来新的名字
     if request.method == "POST":
         #取新出版社的名字
@@ -454,26 +454,26 @@ def edit_movie(request):
         #根据ID获取要修改的对象\
         #print(edit_id)
 
-        edit_movie = models.Movies.objects.get(id=edit_id)
+        edit_movie = models.Foods.objects.get(id=edit_id)
 
-        new_name = request.POST.get("moviename")
-        new_intro= request.POST.get("movieintro")
-        new_time = request.POST.get("movietime")
-        new_yingting = request.POST.get("yingting")
+        new_name = request.POST.get("foodname")#食物名称
+        new_intro= request.POST.get("foodintro")#食品简介
+        new_yingting = request.POST.get("foodyingting")#温馨提示
+        new_price = request.POST.get("foodprice")
         edit_movie.mname = new_name
         edit_movie.intro = new_intro
-        edit_movie.time = new_time
+        edit_movie.price = new_price
         edit_movie.yingting = new_yingting
         edit_movie.save()#把修改提交到数据库
         #挑转到用户列表页，查看是否修改成功
-        return redirect("/movie_list/")
+        return redirect("/foods_list/")
 
     edit_id = request.GET.get("id",None)#从请求URl中获取ID参数
     #如果这个ID存在
     if edit_id:
-        movie_obj = models.Movies.objects.get(id=edit_id)
+        food_obj = models.Foods.objects.get(id=edit_id)
         #将信息传到页面上
-        return render(request,"edit_movie.html",{"movie":movie_obj})
+        return render(request,"edit_foods.html",{"movie":food_obj})
     else:
         return HttpResponse("编辑的用户不存在")
 

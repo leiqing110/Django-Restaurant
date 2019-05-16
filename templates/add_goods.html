@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="https://v3.bootcss.com/favicon.ico">
 
-    <title>添加商品</title>
+    <title>添加酒水</title>
     <!-- Bootstrap core CSS -->
     <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -27,23 +27,23 @@
 
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">添加新商品</h3>
+                    <h3 class="panel-title">添加新酒水</h3>
                 </div>
                 <div class="panel-body">
                     <form action="/add_goods/" method="post">
                         <div class="form-group">
-                            <label for="good_name">商品名称:</label>
-                            <input type="text" class="form-control" id="good_name" placeholder="商品名称"name="good_name">
+                            <label for="good_name">酒水名称:</label>
+                            <input type="text" class="form-control" id="good_name" placeholder="名称"name="good_name">
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" rows="3" placeholder="商品详情" name="good_intro"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="good_prcie">商品价格:</label>
-                            <input type="text" class="form-control" id="good_price" placeholder="商品价格(整数为单位)" name="good_price">
+                            <label for="good_prcie">价格:</label>
+                            <input type="text" class="form-control" id="good_price" placeholder="价格(整数为单位)" name="good_price">
                         </div>
                         <div class="form-group">
-                            <label for="good_type">商品类型</label>
+                            <label for="good_type">酒水类型</label>
                             <select class="form-control" name="good_type">
                                 {% for good_type in  good_type_list%}
                                     <option value="{{ good_type.id }}">{{ good_type.name }}</option>

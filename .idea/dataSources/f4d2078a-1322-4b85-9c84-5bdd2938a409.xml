@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="db4@localhost">
+<dataSource name="db3@localhost">
   <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.15">
     <root id="1">
       <ServerVersion>8.0.11</ServerVersion>
@@ -11,11 +11,11 @@
       <Collation>utf8_general_ci</Collation>
     </schema>
     <schema id="3" parent="1" name="db3">
+      <Current>1</Current>
+      <Visible>1</Visible>
       <Collation>utf8_general_ci</Collation>
     </schema>
     <schema id="4" parent="1" name="db4">
-      <Current>1</Current>
-      <Visible>1</Visible>
       <Collation>utf8_general_ci</Collation>
     </schema>
     <schema id="5" parent="1" name="djangoblog">
@@ -1113,31 +1113,31 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="280" parent="4" name="app01_admininfo"/>
-    <table id="281" parent="4" name="app01_book"/>
-    <table id="282" parent="4" name="app01_book2"/>
-    <table id="283" parent="4" name="app01_cart"/>
-    <table id="284" parent="4" name="app01_cart_goods"/>
-    <table id="285" parent="4" name="app01_cart_movies"/>
-    <table id="286" parent="4" name="app01_goods"/>
-    <table id="287" parent="4" name="app01_goods_type"/>
-    <table id="288" parent="4" name="app01_huiyuan"/>
-    <table id="289" parent="4" name="app01_movies"/>
-    <table id="290" parent="4" name="app01_order"/>
-    <table id="291" parent="4" name="app01_order_goods"/>
-    <table id="292" parent="4" name="app01_order_movies"/>
-    <table id="293" parent="4" name="app01_publisher"/>
-    <table id="294" parent="4" name="app01_userinfo"/>
-    <table id="295" parent="4" name="auth_group"/>
-    <table id="296" parent="4" name="auth_group_permissions"/>
-    <table id="297" parent="4" name="auth_permission"/>
-    <table id="298" parent="4" name="auth_user"/>
-    <table id="299" parent="4" name="auth_user_groups"/>
-    <table id="300" parent="4" name="auth_user_user_permissions"/>
-    <table id="301" parent="4" name="django_admin_log"/>
-    <table id="302" parent="4" name="django_content_type"/>
-    <table id="303" parent="4" name="django_migrations"/>
-    <table id="304" parent="4" name="django_session"/>
+    <table id="280" parent="3" name="app01_admininfo"/>
+    <table id="281" parent="3" name="app01_book"/>
+    <table id="282" parent="3" name="app01_book2"/>
+    <table id="283" parent="3" name="app01_cart"/>
+    <table id="284" parent="3" name="app01_cart_foods"/>
+    <table id="285" parent="3" name="app01_cart_goods"/>
+    <table id="286" parent="3" name="app01_foods"/>
+    <table id="287" parent="3" name="app01_goods"/>
+    <table id="288" parent="3" name="app01_goods_type"/>
+    <table id="289" parent="3" name="app01_huiyuan"/>
+    <table id="290" parent="3" name="app01_order"/>
+    <table id="291" parent="3" name="app01_order_foods"/>
+    <table id="292" parent="3" name="app01_order_goods"/>
+    <table id="293" parent="3" name="app01_publisher"/>
+    <table id="294" parent="3" name="app01_userinfo"/>
+    <table id="295" parent="3" name="auth_group"/>
+    <table id="296" parent="3" name="auth_group_permissions"/>
+    <table id="297" parent="3" name="auth_permission"/>
+    <table id="298" parent="3" name="auth_user"/>
+    <table id="299" parent="3" name="auth_user_groups"/>
+    <table id="300" parent="3" name="auth_user_user_permissions"/>
+    <table id="301" parent="3" name="django_admin_log"/>
+    <table id="302" parent="3" name="django_content_type"/>
+    <table id="303" parent="3" name="django_migrations"/>
+    <table id="304" parent="3" name="django_session"/>
     <column id="305" parent="280" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
@@ -1207,7 +1207,7 @@
     </key>
     <foreign-key id="317" parent="281" name="APP01_book_publisher_id_id_2e265cea_fk_APP01_publisher_id">
       <ColNames>publisher_id_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
+      <RefSchemaName>db3</RefSchemaName>
       <RefTableName>app01_publisher</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
@@ -1250,7 +1250,7 @@
     </key>
     <foreign-key id="325" parent="282" name="APP01_book2_publisher_id_id_418ed3c4_fk_APP01_publisher_id">
       <ColNames>publisher_id_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
+      <RefSchemaName>db3</RefSchemaName>
       <RefTableName>app01_publisher</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
@@ -1283,7 +1283,7 @@
     </key>
     <foreign-key id="331" parent="283" name="APP01_cart_owner_id_a2b7f7d5_fk_APP01_userinfo_id">
       <ColNames>owner_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
+      <RefSchemaName>db3</RefSchemaName>
       <RefTableName>app01_userinfo</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
@@ -1300,20 +1300,20 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="334" parent="284" name="goods_id">
+    <column id="334" parent="284" name="foods_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="335" parent="284" name="APP01_cart_goods_cart_id_goods_id_66ddd76b_uniq">
+    <index id="335" parent="284" name="APP01_cart_foods_cart_id_foods_id_1572a0ef_uniq">
       <ColNames>cart_id
-goods_id</ColNames>
+foods_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="336" parent="284" name="APP01_cart_goods_goods_id_b2b951b9_fk_APP01_goods_id">
-      <ColNames>goods_id</ColNames>
+    <index id="336" parent="284" name="APP01_cart_foods_foods_id_a5d93a27_fk_APP01_foods_id">
+      <ColNames>foods_id</ColNames>
       <Type>btree</Type>
     </index>
     <key id="337" parent="284" name="PRIMARY">
@@ -1321,21 +1321,21 @@ goods_id</ColNames>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="338" parent="284" name="APP01_cart_goods_cart_id_goods_id_66ddd76b_uniq">
+    <key id="338" parent="284" name="APP01_cart_foods_cart_id_foods_id_1572a0ef_uniq">
       <ColNames>cart_id
-goods_id</ColNames>
-      <UnderlyingIndexName>APP01_cart_goods_cart_id_goods_id_66ddd76b_uniq</UnderlyingIndexName>
+foods_id</ColNames>
+      <UnderlyingIndexName>APP01_cart_foods_cart_id_foods_id_1572a0ef_uniq</UnderlyingIndexName>
     </key>
-    <foreign-key id="339" parent="284" name="APP01_cart_goods_cart_id_e199822a_fk_APP01_cart_id">
+    <foreign-key id="339" parent="284" name="APP01_cart_foods_cart_id_807c1532_fk_APP01_cart_id">
       <ColNames>cart_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
+      <RefSchemaName>db3</RefSchemaName>
       <RefTableName>app01_cart</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="340" parent="284" name="APP01_cart_goods_goods_id_b2b951b9_fk_APP01_goods_id">
-      <ColNames>goods_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
-      <RefTableName>app01_goods</RefTableName>
+    <foreign-key id="340" parent="284" name="APP01_cart_foods_foods_id_a5d93a27_fk_APP01_foods_id">
+      <ColNames>foods_id</ColNames>
+      <RefSchemaName>db3</RefSchemaName>
+      <RefTableName>app01_foods</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <column id="341" parent="285" name="id">
@@ -1351,20 +1351,20 @@ goods_id</ColNames>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="343" parent="285" name="movies_id">
+    <column id="343" parent="285" name="goods_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="344" parent="285" name="APP01_cart_movies_cart_id_movies_id_a0e84485_uniq">
+    <index id="344" parent="285" name="APP01_cart_goods_cart_id_goods_id_66ddd76b_uniq">
       <ColNames>cart_id
-movies_id</ColNames>
+goods_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="345" parent="285" name="APP01_cart_movies_movies_id_82e61354_fk_APP01_movies_id">
-      <ColNames>movies_id</ColNames>
+    <index id="345" parent="285" name="APP01_cart_goods_goods_id_b2b951b9_fk_APP01_goods_id">
+      <ColNames>goods_id</ColNames>
       <Type>btree</Type>
     </index>
     <key id="346" parent="285" name="PRIMARY">
@@ -1372,21 +1372,21 @@ movies_id</ColNames>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="347" parent="285" name="APP01_cart_movies_cart_id_movies_id_a0e84485_uniq">
+    <key id="347" parent="285" name="APP01_cart_goods_cart_id_goods_id_66ddd76b_uniq">
       <ColNames>cart_id
-movies_id</ColNames>
-      <UnderlyingIndexName>APP01_cart_movies_cart_id_movies_id_a0e84485_uniq</UnderlyingIndexName>
+goods_id</ColNames>
+      <UnderlyingIndexName>APP01_cart_goods_cart_id_goods_id_66ddd76b_uniq</UnderlyingIndexName>
     </key>
-    <foreign-key id="348" parent="285" name="APP01_cart_movies_cart_id_16d47749_fk_APP01_cart_id">
+    <foreign-key id="348" parent="285" name="APP01_cart_goods_cart_id_e199822a_fk_APP01_cart_id">
       <ColNames>cart_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
+      <RefSchemaName>db3</RefSchemaName>
       <RefTableName>app01_cart</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="349" parent="285" name="APP01_cart_movies_movies_id_82e61354_fk_APP01_movies_id">
-      <ColNames>movies_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
-      <RefTableName>app01_movies</RefTableName>
+    <foreign-key id="349" parent="285" name="APP01_cart_goods_goods_id_b2b951b9_fk_APP01_goods_id">
+      <ColNames>goods_id</ColNames>
+      <RefSchemaName>db3</RefSchemaName>
+      <RefTableName>app01_goods</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <column id="350" parent="286" name="id">
@@ -1396,7 +1396,7 @@ movies_id</ColNames>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="351" parent="286" name="name">
+    <column id="351" parent="286" name="mname">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
@@ -1408,135 +1408,135 @@ movies_id</ColNames>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="353" parent="286" name="price">
-      <Position>4</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="354" parent="286" name="type_id_id">
-      <Position>5</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="355" parent="286" name="num">
-      <Position>6</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="356" parent="286" name="APP01_goods_type_id_id_6ed137a6_fk_APP01_goods_type_id">
-      <ColNames>type_id_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="357" parent="286" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="358" parent="286" name="APP01_goods_type_id_id_6ed137a6_fk_APP01_goods_type_id">
-      <ColNames>type_id_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
-      <RefTableName>app01_goods_type</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="359" parent="287" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="360" parent="287" name="name">
-      <Position>2</Position>
-      <DataType>varchar(64)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="361" parent="287" name="name">
-      <ColNames>name</ColNames>
-      <Unique>1</Unique>
-      <Type>btree</Type>
-    </index>
-    <key id="362" parent="287" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <key id="363" parent="287" name="name">
-      <ColNames>name</ColNames>
-      <UnderlyingIndexName>name</UnderlyingIndexName>
-    </key>
-    <column id="364" parent="288" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="365" parent="288" name="name">
-      <Position>2</Position>
-      <DataType>varchar(20)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="366" parent="288" name="pwd">
-      <Position>3</Position>
-      <DataType>varchar(20)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="367" parent="288" name="price">
-      <Position>4</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="368" parent="288" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="369" parent="289" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="370" parent="289" name="mname">
-      <Position>2</Position>
-      <DataType>varchar(20)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="371" parent="289" name="intro">
-      <Position>3</Position>
-      <DataType>longtext|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="372" parent="289" name="time">
+    <column id="353" parent="286" name="time">
       <Position>4</Position>
       <DataType>datetime(6)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="373" parent="289" name="yingting">
+    <column id="354" parent="286" name="yingting">
       <Position>5</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="374" parent="289" name="price">
+    <column id="355" parent="286" name="price">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="375" parent="289" name="num">
+    <column id="356" parent="286" name="num">
       <Position>7</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="357" parent="286" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="358" parent="287" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="359" parent="287" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="360" parent="287" name="intro">
+      <Position>3</Position>
+      <DataType>longtext|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="361" parent="287" name="price">
+      <Position>4</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="362" parent="287" name="num">
+      <Position>5</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="363" parent="287" name="type_id_id">
+      <Position>6</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="364" parent="287" name="APP01_goods_type_id_id_6ed137a6_fk_APP01_goods_type_id">
+      <ColNames>type_id_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="365" parent="287" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="366" parent="287" name="APP01_goods_type_id_id_6ed137a6_fk_APP01_goods_type_id">
+      <ColNames>type_id_id</ColNames>
+      <RefSchemaName>db3</RefSchemaName>
+      <RefTableName>app01_goods_type</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="367" parent="288" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="368" parent="288" name="name">
+      <Position>2</Position>
+      <DataType>varchar(64)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="369" parent="288" name="name">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="370" parent="288" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="371" parent="288" name="name">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>name</UnderlyingIndexName>
+    </key>
+    <column id="372" parent="289" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="373" parent="289" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="374" parent="289" name="pwd">
+      <Position>3</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="375" parent="289" name="price">
+      <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
@@ -1559,13 +1559,13 @@ movies_id</ColNames>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="379" parent="290" name="user_id_id">
+    <column id="379" parent="290" name="price">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="380" parent="290" name="price">
+    <column id="380" parent="290" name="user_id_id">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
@@ -1582,7 +1582,7 @@ movies_id</ColNames>
     </key>
     <foreign-key id="383" parent="290" name="APP01_order_user_id_id_69537552_fk_APP01_huiyuan_id">
       <ColNames>user_id_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
+      <RefSchemaName>db3</RefSchemaName>
       <RefTableName>app01_huiyuan</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
@@ -1599,20 +1599,20 @@ movies_id</ColNames>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="386" parent="291" name="goods_id">
+    <column id="386" parent="291" name="foods_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="387" parent="291" name="APP01_order_goods_order_id_goods_id_002cef52_uniq">
+    <index id="387" parent="291" name="APP01_order_foods_order_id_foods_id_4fa6b721_uniq">
       <ColNames>order_id
-goods_id</ColNames>
+foods_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="388" parent="291" name="APP01_order_goods_goods_id_4b9f37d4_fk_APP01_goods_id">
-      <ColNames>goods_id</ColNames>
+    <index id="388" parent="291" name="APP01_order_foods_foods_id_5853e3b8_fk_APP01_foods_id">
+      <ColNames>foods_id</ColNames>
       <Type>btree</Type>
     </index>
     <key id="389" parent="291" name="PRIMARY">
@@ -1620,21 +1620,21 @@ goods_id</ColNames>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="390" parent="291" name="APP01_order_goods_order_id_goods_id_002cef52_uniq">
+    <key id="390" parent="291" name="APP01_order_foods_order_id_foods_id_4fa6b721_uniq">
       <ColNames>order_id
-goods_id</ColNames>
-      <UnderlyingIndexName>APP01_order_goods_order_id_goods_id_002cef52_uniq</UnderlyingIndexName>
+foods_id</ColNames>
+      <UnderlyingIndexName>APP01_order_foods_order_id_foods_id_4fa6b721_uniq</UnderlyingIndexName>
     </key>
-    <foreign-key id="391" parent="291" name="APP01_order_goods_order_id_f9d5e415_fk_APP01_order_id">
+    <foreign-key id="391" parent="291" name="APP01_order_foods_order_id_0eb3489a_fk_APP01_order_id">
       <ColNames>order_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
+      <RefSchemaName>db3</RefSchemaName>
       <RefTableName>app01_order</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="392" parent="291" name="APP01_order_goods_goods_id_4b9f37d4_fk_APP01_goods_id">
-      <ColNames>goods_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
-      <RefTableName>app01_goods</RefTableName>
+    <foreign-key id="392" parent="291" name="APP01_order_foods_foods_id_5853e3b8_fk_APP01_foods_id">
+      <ColNames>foods_id</ColNames>
+      <RefSchemaName>db3</RefSchemaName>
+      <RefTableName>app01_foods</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <column id="393" parent="292" name="id">
@@ -1650,20 +1650,20 @@ goods_id</ColNames>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="395" parent="292" name="movies_id">
+    <column id="395" parent="292" name="goods_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="396" parent="292" name="APP01_order_movies_order_id_movies_id_9c8a49b7_uniq">
+    <index id="396" parent="292" name="APP01_order_goods_order_id_goods_id_002cef52_uniq">
       <ColNames>order_id
-movies_id</ColNames>
+goods_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="397" parent="292" name="APP01_order_movies_movies_id_06e12c62_fk_APP01_movies_id">
-      <ColNames>movies_id</ColNames>
+    <index id="397" parent="292" name="APP01_order_goods_goods_id_4b9f37d4_fk_APP01_goods_id">
+      <ColNames>goods_id</ColNames>
       <Type>btree</Type>
     </index>
     <key id="398" parent="292" name="PRIMARY">
@@ -1671,21 +1671,21 @@ movies_id</ColNames>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="399" parent="292" name="APP01_order_movies_order_id_movies_id_9c8a49b7_uniq">
+    <key id="399" parent="292" name="APP01_order_goods_order_id_goods_id_002cef52_uniq">
       <ColNames>order_id
-movies_id</ColNames>
-      <UnderlyingIndexName>APP01_order_movies_order_id_movies_id_9c8a49b7_uniq</UnderlyingIndexName>
+goods_id</ColNames>
+      <UnderlyingIndexName>APP01_order_goods_order_id_goods_id_002cef52_uniq</UnderlyingIndexName>
     </key>
-    <foreign-key id="400" parent="292" name="APP01_order_movies_order_id_3ea514b6_fk_APP01_order_id">
+    <foreign-key id="400" parent="292" name="APP01_order_goods_order_id_f9d5e415_fk_APP01_order_id">
       <ColNames>order_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
+      <RefSchemaName>db3</RefSchemaName>
       <RefTableName>app01_order</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="401" parent="292" name="APP01_order_movies_movies_id_06e12c62_fk_APP01_movies_id">
-      <ColNames>movies_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
-      <RefTableName>app01_movies</RefTableName>
+    <foreign-key id="401" parent="292" name="APP01_order_goods_goods_id_4b9f37d4_fk_APP01_goods_id">
+      <ColNames>goods_id</ColNames>
+      <RefSchemaName>db3</RefSchemaName>
+      <RefTableName>app01_goods</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <column id="402" parent="293" name="id">
@@ -1819,13 +1819,13 @@ permission_id</ColNames>
     </key>
     <foreign-key id="425" parent="296" name="auth_group_permissions_group_id_b120cbf9_fk_auth_group_id">
       <ColNames>group_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
+      <RefSchemaName>db3</RefSchemaName>
       <RefTableName>auth_group</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="426" parent="296" name="auth_group_permissio_permission_id_84c5c92e_fk_auth_perm">
       <ColNames>permission_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
+      <RefSchemaName>db3</RefSchemaName>
       <RefTableName>auth_permission</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
@@ -1872,7 +1872,7 @@ codename</ColNames>
     </key>
     <foreign-key id="434" parent="297" name="auth_permission_content_type_id_2f476e4b_fk_django_co">
       <ColNames>content_type_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
+      <RefSchemaName>db3</RefSchemaName>
       <RefTableName>django_content_type</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
@@ -1997,13 +1997,13 @@ group_id</ColNames>
     </key>
     <foreign-key id="456" parent="299" name="auth_user_groups_user_id_6a12ed8b_fk_auth_user_id">
       <ColNames>user_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
+      <RefSchemaName>db3</RefSchemaName>
       <RefTableName>auth_user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="457" parent="299" name="auth_user_groups_group_id_97559544_fk_auth_group_id">
       <ColNames>group_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
+      <RefSchemaName>db3</RefSchemaName>
       <RefTableName>auth_group</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
@@ -2048,13 +2048,13 @@ permission_id</ColNames>
     </key>
     <foreign-key id="465" parent="300" name="auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id">
       <ColNames>user_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
+      <RefSchemaName>db3</RefSchemaName>
       <RefTableName>auth_user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="466" parent="300" name="auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm">
       <ColNames>permission_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
+      <RefSchemaName>db3</RefSchemaName>
       <RefTableName>auth_permission</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
@@ -2120,13 +2120,13 @@ permission_id</ColNames>
     </key>
     <foreign-key id="478" parent="301" name="django_admin_log_content_type_id_c4bce8eb_fk_django_co">
       <ColNames>content_type_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
+      <RefSchemaName>db3</RefSchemaName>
       <RefTableName>django_content_type</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="479" parent="301" name="django_admin_log_user_id_c564eba6_fk_auth_user_id">
       <ColNames>user_id</ColNames>
-      <RefSchemaName>db4</RefSchemaName>
+      <RefSchemaName>db3</RefSchemaName>
       <RefTableName>auth_user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>

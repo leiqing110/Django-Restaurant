@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="https://v3.bootcss.com/favicon.ico">
 
-    <title>后台管理系统</title>
+    <title>海底捞后台管理系统</title>
     <!-- Bootstrap core CSS -->
     <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -30,7 +30,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="https://v3.bootcss.com/examples/dashboard/#">东北一家人餐饮系统 </a>
+            <a class="navbar-brand" href="https://v3.bootcss.com/examples/dashboard/#">海底捞餐饮系统 </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -50,7 +50,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li><a href="/user_list/">员工信息表</a></li>
-                <li class="active"><a href="movie_list/">菜品信息列表</a></li>
+                <li class="active"><a href="foods_list/">菜品信息列表</a></li>
                 <li><a href="/goods_list">酒水信息列表</a></li>
                 <li><a href="/huiyuan_list">会员信息列表</a></li>
             </ul>
@@ -77,7 +77,7 @@
                         </for>
                         <!-- /.col-md-4 -->
                         <div class="col-md-2 pull-right">
-                            <a href="/add_movie/" class="btn btn-success pull-right">添加菜品</a>
+                            <a href="/add_foods/" class="btn btn-success pull-right">添加菜品</a>
                         </div>
 
                     </div><!-- /.row -->
@@ -86,10 +86,10 @@
                         <thead>
                         <tr>
                             <th>序号</th>
-                            <th>电影名称</th>
-                            <th>放映时间</th>
-                            <th>放映影厅</th>
-                            <th>票价</th>
+                            <th>菜品名称</th>
+                            <th>菜品简介</th>
+                            <th>温馨提示</th>
+                            <th>价格</th>
                             <th>操作</th>
                         </tr>
                         </thead>
@@ -99,13 +99,13 @@
                             <tr>
                                 <td>{{ forloop.counter }}</td>
                                 <td>{{ movie.mname }}</td>
-                                <td>{{ movie.time|date:"Y-m-d H:i:s" }}</td>
+                                <td>{{ movie.intro }}</td>
                                 <td>{{ movie.yingting }}</td>
                                 <td>{{ movie.price }}</td>
                                 <td>
                                     <a class="btn btn-info" href="/add_cart/?id={{ movie.id }}">加入购物车</a>
-                                    <a class="btn btn-danger" href="/delete_movie/?id={{ movie.id }}">删除</a>
-                                    <a class="btn btn-danger" href="/edit_movie/?id={{ movie.id }}">编辑</a>
+                                    <a class="btn btn-danger" href="/delete_foods/?id={{ movie.id }}">删除</a>
+                                    <a class="btn btn-danger" href="/edit_foods/?id={{ movie.id }}">编辑</a>
                                 </td>
                             </tr>
                         {% endfor %}
