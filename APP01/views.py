@@ -197,7 +197,7 @@ def add_cart(request):#电影票加入购物车
 
     if cart_obj and food_obj:
         cart = models.Cart.objects.get(owner=user_id)
-        cart.movies.add(food_obj)
+        cart.foods.add(food_obj)
         # val = val+1
         # cart.save()
         print("数量")
@@ -233,10 +233,10 @@ def delete_cart(request):#清空购物车
 
    # good_obj = models.Goods.objects.get(id=good_id)  # 获取电影对象
     cart_obj = models.Cart.objects.get(owner=user_obj).delete()
-    all_movie = models.Movies.objects.all()
+    all_food = models.Foods.objects.all()
     all_good = models.Goods.objects.all()
 
-    for movie in all_movie:
+    for movie in all_food:
         movie.num = 1
         movie.save()
     for good in all_good:
@@ -247,7 +247,7 @@ def delete_cart(request):#清空购物车
     price2 = 0
     price1 = 0
     messages.success(request,"购物车已清空")
-    return redirect("/movie_list/")
+    return redirect("/foods_list/")
 
 def add_cart2(request):#商品加入购物车
     global flag2
@@ -313,7 +313,7 @@ def cart(request):
         goods_list = cart.goods.all()
     else:
         messages.success(request, "购物车为空")
-        return redirect("/movie_list/")
+        return redirect("/foods_list/")
     user_obj = models.UserInfo.objects.filter(id=user_id)[0]
     # 在html页面完成字符串的替换
 
@@ -364,14 +364,14 @@ def settle_accounts(request):
         cart_obj = models.Cart.objects.filter(owner=user_id)
         if cart_obj:
             cart = models.Cart.objects.get(owner=user_id)
-            movie_list = cart.movies.all()
+            foods_list = cart.foods.all()
             goods_list = cart.goods.all()
 
         order = models.Order.objects.create(user_id_id=edit_huiyuan_obj.id,price=price3)
         #order.user_id_id = edit_huiyuan_obj.id #订单所有者
-        if movie_list:
-            for movie_obj in movie_list:
-                order.movies.add(movie_obj)
+        if foods_list:
+            for movie_obj in foods_list:
+                order.foods.add(movie_obj)
         if goods_list:
             for good_obj in goods_list:
                 order.goods.add(good_obj)
